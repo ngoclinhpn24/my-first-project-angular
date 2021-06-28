@@ -2,17 +2,66 @@
 
    <div class = "header">
       <div style = "text-align:center">
-         <h1>
+         <h1 style="color: red;">
             Welcome to {{title}}!
          </h1>
       </div>
+
    
+      <!-- Pipes -->
+      <h2 style="color:hotpink;">{{"Hello Pipe"|uppercase}}</h2>
+      <div class = "test_pipe">
+         <p style="color: orange;">Uppercase: {{exp_pipe|uppercase}}</p>
+         <p style="color: greenyellow;">Lowercase: {{exp_pipe|lowercase}}</p>
+         <!-- slice: cắt từ vị trí muốn cắt đến vị trí kết thúc (lấy bắt đầu, bỏ kết thúc)-->
+         <p>Slice Pipe: {{exp_pipe|slice:1:4}}</p>
+         <!-- decimal: number: 'a.b-c': a phần nguyên, b-c: phần thực, làm tròn c chữ số phần thực  -->
+         <p style="color: yellow;">Decimal Pipe: {{1234.6758|number:'4.2-3'}}</p>
+
+         <p style="color: blue;">Currency Pipe: {{658.23|currency:"VND"}}</p>
+
+         <!-- Date Pipe -->
+         <p>Date Pipe: {{todayDate|date:'d/M/y'}}</p>
+         <p>Date Pipe: {{todayDate|date:'shortTime'}}</p>
+         <p>Date Pipe: {{todayDate|date:'longTime'}}</p>
+
+         <!-- Percent -->
+         <p style="color: chocolate;">Percent Pipe: {{00.5456|percent}}</p>
+
+         <!-- Json Pipe: chuyển dữ liệu về dạng Json -->
+         <p>Json Pipe: {{jsonVal|json}}</p>
+         
+
+         <!-- Pipe tự tạo - tính căn bậc hai -->
+         <p style="color: crimson;">Custom Pipe: Sqrt của 49: {{49| sqrt}}</p>
+      </div>
+   
+
+      <br>
+      <br>
+      <br>
+       <!-- component mới -->
+      <!-- <app-new-cmp></app-new-cmp> -->
+      <a routerLink="new-cmp">Click để hiển thị New Component</a>
+      <br>
+      <router-outlet></router-outlet>
+
+
+      <br>
+      <br>
+      <!-- Service  -->
+      <h3>Today Date ở App Component: {{todayDate}}</h3>
+      <!-- ràng buộc, .... -->
+      <br>
+      <br>
+      <h2> Binding </h2>
       <div class="month"> Months :
          <select (change) = "changemonths()" name = "month">
             <option *ngFor = "let i of months">{{i}}</option>
          </select>
       </div>
       <br>
+
       <div class = "valid">
          <!-- <span *ngIf = "isavailable">Condition is valid</span> -->
    
@@ -35,7 +84,16 @@
    
 
 
-   <div class="container">
+  
+
+
+    <!-- directive  -->
+   <div style = "text-align:center">
+      <span appChangeText >Welcome to {{"Green"}}.</span>
+   </div>
+
+
+   <!-- <div class="container">
       <div>
           <header>This is my lovely blog</header>
       </div>
@@ -70,18 +128,8 @@
    
    <div class="source">
       Supported by: <a href="https://designervn.net/">Test Team</a>
-   </div>
+   </div> -->
    
-
-
-   <app-new-cmp></app-new-cmp>
-
-
-    <!-- directive  -->
-   <div style = "text-align:center">
-      <span appChangeText >Welcome to {{title}}.</span>
-   </div>
-
 </div>
 
 

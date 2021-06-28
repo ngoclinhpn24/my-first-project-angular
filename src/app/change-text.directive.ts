@@ -8,8 +8,9 @@ export class ChangeTextDirective {
 
   // ElementRef: lấy ptu kiểu ElementFef
   constructor(Element: ElementRef) {
-    // console.log(Element);
-    Element.nativeElement.innerText = "Text is changed by changeText Directive. ";
+  //  console.log(Element);
+    Element.nativeElement.innerText = "Use changeText Directive. ";
+    
    }
 
 }

@@ -3,20 +3,36 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { NewCmpComponent } from './new-cmp/new-cmp.component';
 import { NameofthedirectiveDirective } from './nameofthedirective.directive';
 import { ChangeTextDirective } from './change-text.directive';
 
+// Đường dẫn của sqrt pipe
+import { SqrtPipe } from './app.sqrt';
+import { Router, RouterModule } from '@angular/router';
+import { MyserviceService } from './myservice.service';
 @NgModule({
   declarations: [
     AppComponent,
     NewCmpComponent,
     NameofthedirectiveDirective,
-    ChangeTextDirective
+    ChangeTextDirective,
+
+    // Khai báo sqrt pipe
+    SqrtPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    // Cài đặt cho router: path nào tương ứng với component nào
+    RouterModule.forRoot([
+      {
+        path: 'new-cmp', // path: đường dẫn
+        component: NewCmpComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
