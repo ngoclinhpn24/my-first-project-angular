@@ -40,6 +40,16 @@
       <br>
       <br>
       <br>
+       <!-- http: hiển thị data ra màn hình -->
+
+      <h3 style="color: crimson;"> Http: Hiển thị data</h3>
+      <ul *ngFor = "let data of results">
+         <li> id: {{data.id}} ; name: {{data.name}}</li>
+   
+
+      </ul>
+       <br>
+       <br>
        <!-- component mới -->
       <!-- <app-new-cmp></app-new-cmp> -->
       <a routerLink="new-cmp">Click để hiển thị New Component</a>
@@ -49,8 +59,14 @@
 
       <br>
       <br>
-      <!-- Service  -->
+      <!-- Service, thuộc tính service -->
       <h3>Today Date ở App Component: {{todayDate}}</h3>
+
+      <h3>Property service: {{propertyService}}</h3>
+
+     
+
+
       <!-- ràng buộc, .... -->
       <br>
       <br>
