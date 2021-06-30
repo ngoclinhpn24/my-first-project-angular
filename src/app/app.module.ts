@@ -8,6 +8,21 @@ import { NewCmpComponent } from './new-cmp/new-cmp.component';
 import { NameofthedirectiveDirective } from './nameofthedirective.directive';
 import { ChangeTextDirective } from './change-text.directive';
 
+// animation
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Material  sidenav + menu
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+
+
+// material date: hiển thị ngày tháng
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
+
+
 // import http module
 // import { HttpClientM}
 import {HttpClientModule} from '@angular/common/http';
@@ -38,7 +53,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, // model driven form
+    BrowserAnimationsModule,
+
+    MatButtonModule,
+    MatSidenavModule,
+    MatMenuModule,
+
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
 
    // Cài đặt cho router: path nào tương ứng với component nào
 

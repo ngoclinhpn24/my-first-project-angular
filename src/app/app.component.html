@@ -9,7 +9,70 @@
 
       <br>
       <br>
+
+      <!-- material -->
+
+      <!-- mat-sidevar -->
+      <!-- <div >
+         <mat-sidenav-container class="exp-container">
+             <mat-sidenav style="background-color: lavenderblush;" #sidenav>
+                 <p class="nav-content">Nav </p>
+             </mat-sidenav>
       
+             <mat-sidenav-content style="text-align: center">
+                 <p>
+                     <button mat-button (click)="sidenav.toggle()">Toggle</button>
+                 </p>
+      
+             </mat-sidenav-content>
+         </mat-sidenav-container>
+     </div> -->
+
+     <!-- menu -->
+      <button mat-button [matMenuTriggerFor] = "menu">Menu</button>
+      <mat-menu #menu = "matMenu">
+         <button mat-menu-item>
+            File
+         </button>
+         <button mat-menu-item>
+            Save As
+         </button>
+      </mat-menu>
+
+     <!-- sidenav -->
+      <mat-sidenav-container class = "example-container">
+         <mat-sidenav #sidenav class = "example-sidenav">
+            Angular 6
+         </mat-sidenav>
+         <div class = "example-sidenav-content" style="margin-left: 100px;">
+            <button type = "button" mat-button  (click) = "sidenav.open()">
+               Open sidenav
+            </button>
+         </div>
+      </mat-sidenav-container>
+
+     <!-- material: date -->
+      <mat-form-field>
+         <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+     <br>
+     <br>
+     <br>
+     <br>
+      <!-- Animation -->
+      <!-- @myanimation directive -->
+      <div class ="ex_animation">
+         <button (click) = "animate()">Click button</button>
+         <div [@myanimation] = "state" class = "rotate">
+            <img src="assets/a12.jpg" alt="Ảnh" width="200" height="200">
+         </div>
+      </div>
+      <br>
+      <br>
+     
       <!-- Form dang nhap -->
       <!-- định nghĩa tên form là userLogin thông qua template #userlogin="ngForm" -->
       <!-- <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)">
@@ -21,22 +84,26 @@
          <br>
          <input type="submit" value="submit">
       </form> -->
-      <div>
+
+      <!-- formControlName đươc sd trong thẻ input để chưa GIÁ TRỊ mà ta khai báo bên phía component class  -->
+      <div class="formLogin">
          <form [formGroup]="formdata" (ngSubmit) = "onClickSubmit(formdata.value)" >
             <input type="text" class="fortextbox" name="username" placeholder="username"
-               formControlName="username">
+                  formControlName="username">
             <br/>
             <br> 
              
             <input type="pwd" class="fortextbox" name="pwd"
                placeholder="pwd" formControlName="pwd">
             <br/>
-             <br>
-            <input type="submit" class="forsubmit" value="Submit">
+            <br>
+
+            <!-- nếu TM dkien validator thì submit, ko TM thì disabled -->
+            <input type="submit" [disabled] = "!formdata.valid" class="forsubmit" value="Submit">
          </form>
       </div>
       <p>
-         Entered Username : {{username}}
+         Username entered is : {{username}}
       </p>
 
       <br>

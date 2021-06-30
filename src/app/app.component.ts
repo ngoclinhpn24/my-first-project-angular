@@ -2,12 +2,27 @@ import { Component } from '@angular/core';
 import { MyserviceService } from './myservice.service';
 
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+
+  animations: [
+    trigger('myanimation', [
+        state('smaller', style({
+            transform: 'translateY(80px)' // di chuyển thẳng lên trên theo trục Oy
+        })),
+        state('larger', style({
+            transform: 'translateY(5px)' // nếu là 0px: di chuyển lại vị trí ban đầu
+        })),
+        // transition: định nghĩa các thông số hiển thị: độ dài, độ trễ khi chuyển từ trạng thái này -> trạng thái khác
+        transition('smaller <=> larger', animate('400ms ease-in')) // animate: 500ms: tốc độ di chuyển của animation, càng lớn càng chậm
+    ])
+  ]
 })
 export class AppComponent {
 
@@ -18,6 +33,13 @@ export class AppComponent {
   propertyService = new String();
   username:any;
   formdata:any;
+
+  // animation
+  state: string = "smaller";
+  animate(){
+    // Nếu state đang là larger thì chuyển về smaller và ngược lại
+    this.state = this.state == 'larger' ? 'smaller' : 'larger';
+  }
 
   jsonVal = {name: 'A', age:'20', add:{a1:'Ha Noi', a2:'Thanh Xuan'}};
   // mang cac thang
@@ -77,13 +99,39 @@ export class AppComponent {
     })
 
     this.formdata = new FormGroup({
-      username : new FormControl("fish123"),
-      password : new FormControl("123456a")
+
+      // thêm phần validator cho control username:
+      // vd ở đây validate cho trường username với 3 <= length <= 20 + bắt buộc
+
+      username: new FormControl("", Validators.compose([
+        Validators.required, // bắt buộc
+        Validators.minLength(3),
+        Validators.maxLength(20)
+
+      ])),
+
+     // pwd: new FormControl("")
+
+      // tự custom, độ dài min là 6 ký tự
+      // kbao hàm pwdlengthValidator để ktra độ dài
+      
+      //pwd: new FormControl("", this.pwdLengthValidator)
+      // username : new FormControl("fish123"),
+      // password : new FormControl("123456a")
     });
   }
 
   onClickSubmit(data:any){
     this.username = data.username;
   }
+
+  // custom phaan pwd
+  // pwdLengthValidator(control:any){
+  //     if(control.value.length < 6){
+  //       return {
+  //         pwd: true
+  //       };
+  //     }
+  // }
 
 }
