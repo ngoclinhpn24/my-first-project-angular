@@ -17,6 +17,12 @@ import {HttpClientModule} from '@angular/common/http';
 import { SqrtPipe } from './app.sqrt';
 import { Router, RouterModule } from '@angular/router';
 import { MyserviceService } from './myservice.service';
+
+// Form 
+import { FormsModule} from '@angular/forms';
+// import để viết code theo Model Driven Form
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +37,8 @@ import { MyserviceService } from './myservice.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
 
    // Cài đặt cho router: path nào tương ứng với component nào
 

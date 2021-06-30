@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MyserviceService } from './myservice.service';
 
 import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'my-first-project';
 
   exp_pipe = 'Green Field';
   todayDate = new Date();
   propertyService = new String();
+  username:any;
+  formdata:any;
 
   jsonVal = {name: 'A', age:'20', add:{a1:'Ha Noi', a2:'Thanh Xuan'}};
   // mang cac thang
@@ -23,6 +27,12 @@ export class AppComponent {
 
   // bien de an hien noi dung can hien thi
   isavailable = false;
+
+  // click form dang nhap, data truyền vào chính là giá trị của form userlogin(userlogin.value) bên html
+
+  // onClickSubmit(data:any){
+  //     alert("Entered Username: " + data.username);
+  // }
 
   // sự kiện
   myClickFunction() { 
@@ -65,7 +75,15 @@ export class AppComponent {
         console.log(data);
         this.results = data; // hiển thị ra màn hình
     })
-    
+
+    this.formdata = new FormGroup({
+      username : new FormControl("fish123"),
+      password : new FormControl("123456a")
+    });
+  }
+
+  onClickSubmit(data:any){
+    this.username = data.username;
   }
 
 }
